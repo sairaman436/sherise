@@ -69,6 +69,32 @@ SheRise is a platform built to connect women offering skills and services (such 
    ```
    The Flask app will serve the backend API and the static frontend simultaneously.
 
+## Deployment (PythonAnywhere)
+
+This application uses SQLite, which requires a persistent filesystem. [PythonAnywhere](https://www.pythonanywhere.com/) provides a free tier with persistent storage, making it an excellent choice.
+
+1. **Create an account** on [PythonAnywhere](https://www.pythonanywhere.com/).
+2. **Open a Bash Console** from the PythonAnywhere dashboard and clone your repository:
+   ```bash
+   git clone https://github.com/sairaman436/sherise.git
+   cd sherise
+   ```
+3. **Create a virtual environment and install dependencies:**
+   ```bash
+   mkvirtualenv --python=/usr/bin/python3.10 myenv
+   pip install -r requirements.txt
+   ```
+4. **Set up Environment Variables:**
+   Create a `.env` file in `/home/yourusername/sherise` with all your secrets (Groq, Twilio, SMTP).
+5. **Configure the Web App:**
+   - Go to the **Web** tab and click **Add a new web app**.
+   - Choose **Manual configuration** and select **Python 3.10**.
+   - Under the **Virtualenv** section, enter the path to your virtual environment (e.g., `/home/yourusername/.virtualenvs/myenv`).
+   - Under the **Code** section, open the **WSGI configuration file**.
+6. **Update WSGI File:**
+   Replace the default WSGI file content with the content from `pythonanywhere_wsgi.py` in this repository (make sure to replace `yourusername` with your actual username!).
+7. **Reload the web app** and visit your live site!
+
 ## Contribution
 
 Contributions are welcome! Please create an issue or submit a Pull Request.
