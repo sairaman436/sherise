@@ -110,10 +110,17 @@ frontend_dir = os.path.join(basedir, 'frontend_dist')
 app = Flask(__name__, static_folder=frontend_dir, static_url_path='')
 CORS(app)
 
-# Configure Database (SQLite)
-# Database file will be created in the 'instance' folder relative to app.py
-db_path = os.path.join(basedir, 'instance', 'shakthi_v6.db')
-app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
+# Configure Database (PostgreSQL for Vercel/Cloud, fallback to SQLite)
+database_url = os.environ.get('DATABASE_URL')
+if database_url:
+    # Handle SQLAlchemy 1.4+ requirement for postgresql://
+    if database_url.startswith("postgres://"):
+        database_url = database_url.replace("postgres://", "postgresql://", 1)
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+else:
+    db_path = os.path.join(basedir, 'instance', 'shakthi_v6.db')
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
