@@ -2,7 +2,7 @@
 
 **Empowering Women, One Task at a Time**
 
-SheRise is a platform built to connect ladies offering skills and services (such as Tailoring, Handicrafts, Tutoring, Beauty Services, Elderly Care, Data Entry, etc.) with people seeking those services. It features an AI-powered matching algorithm to recommend jobs based on user skills and locations.
+SheRise is a platform built to connect womens offering skills and services (such as Tailoring, Handicrafts, Tutoring, Beauty Services, Elderly Care, Data Entry, etc.) with people seeking those services. It features an AI-powered matching algorithm to recommend jobs based on user skills and locations.
 
 ## Features
 
